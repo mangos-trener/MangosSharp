@@ -20,6 +20,9 @@
     <ProjectReference Include="..\Mangos.Logging\Mangos.Logging.csproj" />
     <ProjectReference Include="..\Mangos.MySql\Mangos.MySql.csproj" />
     <ProjectReference Include="..\Mangos.World\Mangos.World.csproj" />
+    <Content Include="dbc\**\*.dbc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
