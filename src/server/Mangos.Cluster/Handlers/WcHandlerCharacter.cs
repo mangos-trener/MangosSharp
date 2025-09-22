@@ -34,6 +34,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Mangos.Cluster.Handlers;
 
@@ -302,7 +303,9 @@ public class WcHandlerCharacter
 
             // DONE: Server Message Of The Day
             _clusterServiceLocator.Functions.SendMessageMotd(Client, "Welcome to World of Warcraft.");
-            _clusterServiceLocator.Functions.SendMessageMotd(Client, string.Format("This server is using {0} v.{1}", _clusterServiceLocator.Functions.SetColor("[MangosSharp, written in C# .NET 5.0]", 4, 147, 11), Assembly.GetExecutingAssembly().GetName().Version));
+            _clusterServiceLocator.Functions.SendMessageMotd(Client, string.Format("This server is using {0} v.{1}",
+                _clusterServiceLocator.Functions.SetColor($"[MangosSharp, written in C# {RuntimeInformation.FrameworkDescription}]", 4, 147, 11),
+                Assembly.GetExecutingAssembly().GetName().Version));
 
             // DONE: Guild Message Of The Day
             var argobjCharacter = this;
