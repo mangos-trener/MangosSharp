@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS `mangosVBworld` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+CREATE DATABASE IF NOT EXISTS `mangosVBcharacters` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+CREATE DATABASE IF NOT EXISTS `mangosVBaccounts` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+GRANT ALL PRIVILEGES ON `mangosVBworld` . * TO 'root'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `mangosVBcharacters` . * TO 'root'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `mangosVBaccounts` . * TO 'root'@'localhost' WITH GRANT OPTION;

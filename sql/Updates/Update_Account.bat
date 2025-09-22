@@ -41,8 +41,8 @@ set /p svr=What is your MySQL host name?           [localhost]   :
 if %svr%. == . set svr=localhost
 set /p user=What is your MySQL user name?           [root]      : 
 if %user%. == . set user=root
-set /p pass=What is your MySQL password?            [rootpass]           : 
-if %pass%. == . set pass=rootpass
+set /p pass=What is your MySQL password?            [root]           : 
+if %pass%. == . set pass=root
 set /p port=What is your MySQL port?                [3306]        : 
 if %port%. == . set port=3306
 set /p wdb=What is your Account database name?       [mangosVBaccounts]      : 

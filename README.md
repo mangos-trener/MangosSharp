@@ -88,6 +88,13 @@ Installation instructions for various operation systems can be found here.
 
 * [**Installation Guides**][17] 
 
+In order to install the database, follow these steps:
+1. Execute /sql/Updates/Create_Databases.sql
+2. Run /sql/Updates/Update_Account.sql
+3. Run /sql/Updates/Update_Characters.sql
+4. Run /sql/Updates/Update_World.sql
+
+This will automatically create a database with a valid schema for the server.
 
 License
 -------
