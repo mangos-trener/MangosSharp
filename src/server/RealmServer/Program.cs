@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2013-2025 getMaNGOS <https://www.getmangos.eu>
+// Copyright (C) 2013-2023 getMaNGOS <https://getmangos.eu>
 //
 // This program is free software. You can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,26 +16,27 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-using Autofac;
 using Mangos.Configuration;
 using Mangos.Logging;
-using Mangos.MySql;
+using Mangos.MySql.DependencyInjection;
 using Mangos.Tcp;
-using RealmServer;
+using Microsoft.Extensions.DependencyInjection;
+using RealmServer.DependencyInjection;
 
 Console.Title = "Realm server";
 
-var builder = new ContainerBuilder();
-builder.RegisterModule<ConfigurationModule>();
-builder.RegisterModule<LoggingModule>();
-builder.RegisterModule<MySqlModule>();
-builder.RegisterModule<TcpModule>();
-builder.RegisterModule<RealmModule>();
+var services = new ServiceCollection()
+    .AddConfigurationFile()
+    .AddCustomLogging()
+    .AddDatabase()
+    .AddTcpServer()
+    .AddRealmServices();
 
-var container = builder.Build();
-var configuration = container.Resolve<MangosConfiguration>();
-var logger = container.Resolve<IMangosLogger>();
-var tcpServer = container.Resolve<TcpServer>();
+var serviceProvider = services.BuildServiceProvider();
+
+var configuration = serviceProvider.GetRequiredService<MangosConfiguration>();
+var logger = serviceProvider.GetRequiredService<IMangosLogger>();
+var tcpServer = serviceProvider.GetRequiredService<TcpServer>();
 
 logger.Trace(@" __  __      _  _  ___  ___  ___               ");
 logger.Trace(@"|  \/  |__ _| \| |/ __|/ _ \/ __|   We Love    ");
@@ -45,4 +46,5 @@ logger.Trace("                                                ");
 logger.Trace("Website / Forum / Support: https://www.getmangos.eu/");
 
 logger.Information("Starting realm tcp server");
+
 await tcpServer.RunAsync(configuration.Realm.RealmServerEndpoint);

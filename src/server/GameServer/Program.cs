@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2013-2025 getMaNGOS <https://www.getmangos.eu>
+// Copyright (C) 2013-2023 getMaNGOS <https://getmangos.eu>
 //
 // This program is free software. You can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,33 +16,34 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-using Autofac;
-using GameServer;
+using GameServer.DependencyInjection;
 using Mangos.Cluster;
 using Mangos.Configuration;
 using Mangos.Logging;
-using Mangos.MySql;
 using Mangos.Tcp;
 using Mangos.World;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 Console.Title = "Game server";
 
-var builder = new ContainerBuilder();
-builder.RegisterModule<ConfigurationModule>();
-builder.RegisterModule<LoggingModule>();
-builder.RegisterModule<MySqlModule>();
-builder.RegisterModule<TcpModule>();
-builder.RegisterModule<GameModule>();
-builder.RegisterModule<LegacyClusterModule>();
-builder.RegisterModule<LegacyWorldModule>();
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((services) =>
+        services.AddConfigurationFile()
+            .AddCustomLogging()
+            .AddMySqlDatabase()
+            .AddTcpServer()
+            .AddGameModule()
+            .AddLegacyClusterServices()
+            .AddLegacyWorldServices())
+    .Build();
 
-var container = builder.Build();
-var configuration = container.Resolve<MangosConfiguration>();
-var logger = container.Resolve<IMangosLogger>();
-var tcpServer = container.Resolve<TcpServer>();
-var legacyWorldCluster = container.Resolve<LegacyWorldCluster>();
-WorldServiceLocator.Container = container;
-var worldServer = container.Resolve<WorldServer>();
+var configuration = host.Services.GetRequiredService<MangosConfiguration>();
+var logger = host.Services.GetRequiredService<IMangosLogger>();
+var tcpServer = host.Services.GetRequiredService<TcpServer>();
+var legacyWorldCluster = host.Services.GetRequiredService<LegacyWorldCluster>();
+//WorldServiceLocator.Container = host.Services;
+var worldServer = host.Services.GetRequiredService<WorldServer>();
 
 logger.Trace(@" __  __      _  _  ___  ___  ___               ");
 logger.Trace(@"|  \/  |__ _| \| |/ __|/ _ \/ __|   We Love    ");

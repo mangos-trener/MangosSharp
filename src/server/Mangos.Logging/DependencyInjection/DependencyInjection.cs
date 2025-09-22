@@ -1,5 +1,5 @@
-//
-// Copyright (C) 2013-2025 getMaNGOS <https://www.getmangos.eu>
+﻿//
+// Copyright (C) 2013-2023 getMaNGOS <https://getmangos.eu>
 //
 // This program is free software. You can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,14 +16,15 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Mangos.Logging;
-
-public sealed class LoggingModule : Module
+namespace Mangos.Logging.DependencyInjection;
+public static class DependencyInjection
 {
-    protected override void Load(ContainerBuilder builder)
+    public static IServiceCollection AddMangosLogger(this IServiceCollection services)
     {
-        builder.RegisterType<MangosLogger>().As<IMangosLogger>().SingleInstance();
+        services.AddSingleton<IMangosLogger, MangosLogger>();
+
+        return services;
     }
 }

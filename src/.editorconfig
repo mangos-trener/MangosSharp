@@ -2,11 +2,26 @@ root=true
 
 [*]
 indent_style=space
-end_of_line=crlf
+end_of_line= crlf
 charset=utf-8
 
 [*.{csproj, props}]
 indent_size=2
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:silent
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
+dotnet_code_quality_unused_parameters = all:suggestion
+dotnet_style_qualification_for_field = false:error
+dotnet_style_qualification_for_property = false:error
+dotnet_style_qualification_for_method = false:error
+dotnet_style_qualification_for_event = false:silent
+dotnet_style_require_accessibility_modifiers = always:error
+dotnet_style_coalesce_expression = true:error
+dotnet_style_null_propagation = true:error
+dotnet_style_prefer_conditional_expression_over_assignment = true:silent
+dotnet_style_prefer_conditional_expression_over_return = true:silent
 
 [*.cs]
 file_header_template=\r\nCopyright (C) 2013-2023 getMaNGOS <https://getmangos.eu>\r\n\r\nThis program is free software. You can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation. either version 2 of the License, or\r\n(at your option) any later version.\r\n\r\nThis program is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY. Without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\nYou should have received a copy of the GNU General Public License\r\nalong with this program. If not, write to the Free Software\r\nFoundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\r\n
@@ -35,22 +50,22 @@ csharp_style_expression_bodied_properties=true:error
 csharp_style_expression_bodied_indexers=false:error
 csharp_style_expression_bodied_accessors=true:error
 csharp_style_expression_bodied_lambdas=true:error
-csharp_style_pattern_matching_over_as_with_null_check=true:error
-csharp_style_pattern_matching_over_is_with_cast_check=true:error
-csharp_style_prefer_switch_expression=true:error
-csharp_style_prefer_not_pattern=true:error
-csharp_prefer_braces=true:error
-csharp_prefer_simple_using_statement=true:error
+csharp_style_pattern_matching_over_as_with_null_check= true:error
+csharp_style_pattern_matching_over_is_with_cast_check= true:error
+csharp_style_prefer_switch_expression= true:error
+csharp_style_prefer_not_pattern= true:error
+csharp_prefer_braces= true:suggestion
+csharp_prefer_simple_using_statement= true:error
 csharp_using_directive_placement=outside_namespace:error
 #dotnet_code_quality_unused_parameters=all:error
 dotnet_style_namespace_match_folder=true:error
-csharp_using_directive_placement=outside_namespace:error
-csharp_style_namespace_declarations=file_scoped:error
+csharp_using_directive_placement= outside_namespace:error
+csharp_style_namespace_declarations= file_scoped:error
 dotnet_style_allow_multiple_blank_lines_experimental=true:error
 dotnet_style_prefer_auto_properties=true:error
 dotnet_style_prefer_simplified_boolean_expressions=true:error
 dotnet_style_prefer_simplified_interpolation=true:error
-csharp_style_prefer_pattern_matching=true:error
+csharp_style_prefer_pattern_matching= true:error
 csharp_style_prefer_null_check_over_type_check=true:error
 csharp_prefer_simple_default_expression=true:error
 csharp_style_inlined_variable_declaration=true:error
@@ -107,16 +122,32 @@ dotnet_naming_symbols.type_symbols.applicable_kinds=namespace,class,struct,enum,
 dotnet_naming_symbols.type_symbols.applicable_accessibilities=*
 dotnet_naming_symbols.type_symbols.required_modifiers=
 dotnet_naming_rule.type_rule.symbols=type_symbols
-dotnet_naming_rule.type_rule.style=pascal_case_style
-dotnet_naming_rule.type_rule.severity=error
+dotnet_naming_rule.type_rule.style = pascal_case_style
+dotnet_naming_rule.type_rule.severity = error
 
 # interface naming rule
 dotnet_naming_symbols.interface_symbols.applicable_kinds=interface
 dotnet_naming_symbols.interface_symbols.applicable_accessibilities=*
 dotnet_naming_symbols.interface_symbols.required_modifiers=
 dotnet_naming_rule.interface_rule.symbols=interface_symbols
-dotnet_naming_rule.interface_rule.style=interface_style
-dotnet_naming_rule.interface_rule.severity=error
+dotnet_naming_rule.interface_rule.style = interface_style
+dotnet_naming_rule.interface_rule.severity = error
+csharp_space_around_binary_operators = before_and_after
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_prefer_system_threading_lock = true:suggestion
+csharp_style_prefer_extended_property_pattern = true:suggestion
+csharp_prefer_static_local_function = true:suggestion
+csharp_prefer_static_anonymous_function = true:suggestion
+csharp_style_prefer_readonly_struct = true:suggestion
+csharp_style_prefer_readonly_struct_member = true:suggestion
+
+# IDE0058: Warto?? wyra?enia nie jest nigdy u?ywana.
+dotnet_diagnostic.IDE0058.severity = suggestion
+
+# IDE0011: Dodaj nawiasy klamrowe
+dotnet_diagnostic.IDE0011.severity = suggestion
 
 [*Program*.cs]
 dotnet_diagnostic.CA1852.severity = none
