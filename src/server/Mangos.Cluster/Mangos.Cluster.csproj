@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  
+
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
-    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="System.Linq.Async" />
+    <PackageReference Include="Autofac" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Mangos.Common.Legacy\Mangos.Common.Legacy.csproj" />
     <ProjectReference Include="..\Mangos.Configuration\Mangos.Configuration.csproj" />
     <ProjectReference Include="..\Mangos.Tcp\Mangos.Tcp.csproj" />
   </ItemGroup>
-  
+
 </Project>

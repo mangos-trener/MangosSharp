@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <AssemblyName>WorldServer</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="7.0.1" />
-    <PackageReference Include="System.CodeDom" Version="7.0.0" />
+    <PackageReference Include="Autofac" />
+    <PackageReference Include="System.CodeDom" />
   </ItemGroup>
 
   <ItemGroup>

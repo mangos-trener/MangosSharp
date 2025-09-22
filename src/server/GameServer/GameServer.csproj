@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Autofac" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +20,9 @@
     <ProjectReference Include="..\Mangos.Logging\Mangos.Logging.csproj" />
     <ProjectReference Include="..\Mangos.MySql\Mangos.MySql.csproj" />
     <ProjectReference Include="..\Mangos.World\Mangos.World.csproj" />
+    <Content Include="dbc\**\*.dbc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
